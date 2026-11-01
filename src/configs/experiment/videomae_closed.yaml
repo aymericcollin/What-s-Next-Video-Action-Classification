@@ -1,0 +1,7 @@
+# @package _global_
+# VideoMAE fine-tuning from locally pretrained encoder (closed world track).
+# Run from src/: python train.py experiment=videomae_closed
+defaults:
+  - override /model: videomae_closed
+  - override /data: videomae
+  - override /train: videomae

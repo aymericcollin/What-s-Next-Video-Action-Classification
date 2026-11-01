@@ -1,0 +1,6 @@
+# @package _global_
+model:
+  name: videomae
+  num_classes: 33
+  pretrained: true
+  pretrained_model: "${hydra:runtime.cwd}/checkpoints/videomae_pretrain/final"

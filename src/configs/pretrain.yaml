@@ -1,0 +1,8 @@
+defaults:
+  - experiment: videomae_pretrain
+  - _self_
+
+wandb:
+  enabled: true
+  project: csc43m04-challenge
+  name: videomae-pretrain

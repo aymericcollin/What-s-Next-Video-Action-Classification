@@ -1,0 +1,6 @@
+# @package _global_
+# From-scratch closed-world track: EfficientNet-B0 + BiGRU, ~7M params.
+defaults:
+  - override /model: efficientnet_gru
+  - override /data: closed
+  - override /train: closed

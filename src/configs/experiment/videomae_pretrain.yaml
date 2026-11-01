@@ -1,0 +1,20 @@
+# @package _global_
+# VideoMAE MAE pretraining from scratch (closed world track).
+# Run from src/: python pretrain.py
+dataset:
+  train_dir: ${hydra:runtime.cwd}/processed_data/train
+  val_dir: ${hydra:runtime.cwd}/processed_data/val
+  num_frames: 16
+  image_size: 224
+  seed: 42
+
+pretraining:
+  epochs: 300
+  batch_size: 32
+  num_workers: 4
+  lr: 1.5e-4
+  weight_decay: 0.05
+  warmup_epochs: 10
+  mask_ratio: 0.9
+  checkpoint_dir: ${hydra:runtime.cwd}/checkpoints/videomae_pretrain
+  save_every: 20
