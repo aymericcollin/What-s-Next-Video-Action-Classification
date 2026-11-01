@@ -1,0 +1,6 @@
+# @package _global_
+model:
+  name: efficientnet_gru
+  num_classes: 33
+  pretrained: false
+  dropout: 0.3
