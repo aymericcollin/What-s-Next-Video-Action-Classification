@@ -2,7 +2,7 @@
 
 Course project for CSC_43M04_EP (Deep Learning in Computer Vision, École polytechnique), done with Arthus Wauquiez. Given only the beginning of a clip, predict which of 33 Something-Something V2 actions happens next. The challenge had two tracks: a closed-world track (training from scratch, by Arthus) and an open-world track (pretrained models allowed). This repository contains my open-world work.
 
-**Result: 68.0 % top-1 on the private leaderboard** with an ensemble of three fine-tuned V-JEPA 2 ViT-L models.
+**Result: 71 % top-1 on the public leaderboard and 68.0 % on the private (final) leaderboard** with an ensemble of three fine-tuned V-JEPA 2 ViT-L models.
 
 ## Approach
 
@@ -21,10 +21,10 @@ Course project for CSC_43M04_EP (Deep Learning in Computer Vision, École polyte
 | V-JEPA 2 ViT-L, second run | 67.5 % |
 | V-JEPA 2 ViT-L, focal loss + oversampling | 67.6 % |
 
-| Ensemble | Private leaderboard |
-|---|---|
-| 3 × V-JEPA 2 ViT-L | **68.0 %** |
-| 3 × V-JEPA 2 ViT-L + VideoMAE | 67.8 % |
+| Ensemble | Public leaderboard | Private leaderboard |
+|---|---|---|
+| 3 × V-JEPA 2 ViT-L | **71 %** | **68.0 %** |
+| 3 × V-JEPA 2 ViT-L + VideoMAE | — | 67.8 % |
 
 V-JEPA 2 beats the other backbones by more than 12 points; TimeSformer overfits heavily (93 % train vs 53 % val). Adding the weaker VideoMAE to the ensemble hurts.
 
