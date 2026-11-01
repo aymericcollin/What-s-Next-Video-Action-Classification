@@ -1,0 +1,28 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 16
+  num_workers: 4
+
+  # Phase 1: head + pooler only (backbone frozen)
+  head_only_epochs: 3
+  # Phase 2: LLRD fine-tuning
+  epochs: 12
+
+  # Head / pooler LR (phase 1 + 2)
+  lr: 1.0e-4
+  # Top encoder block LR; earlier blocks decay by lr_decay per block (LLRD)
+  lr_backbone: 2.0e-5
+  lr_decay: 0.75
+
+  warmup_epochs: 2
+  weight_decay: 0.1
+
+  use_mixup: true
+  mixup_alpha: 0.4
+  label_smoothing: 0.1
+  weighted_sampler: true
+
+  # Isolated from all other proposals
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vjepa2/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vjepa2/latest_checkpoint.pt

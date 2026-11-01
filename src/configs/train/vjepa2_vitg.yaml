@@ -1,0 +1,28 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 4
+  num_workers: 2
+
+  # Phase 1: head + pooler only (backbone frozen)
+  head_only_epochs: 3
+  # Phase 2: LLRD fine-tuning — 20 total epochs
+  epochs: 20
+
+  # Head / pooler LR (phase 1 + 2)
+  lr: 5.0e-4
+  # ViT-G is larger — use a smaller backbone LR than ViT-L
+  lr_backbone: 5.0e-6
+  lr_decay: 0.75
+
+  warmup_epochs: 2
+  weight_decay: 0.05
+
+  use_mixup: true
+  mixup_alpha: 0.8
+  label_smoothing: 0.1
+  weighted_sampler: true
+
+  # Isolated from vjepa2 ViT-L checkpoints
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_vitg/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_vitg/latest_checkpoint.pt

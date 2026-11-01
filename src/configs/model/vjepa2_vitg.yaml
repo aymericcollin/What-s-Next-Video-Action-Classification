@@ -1,0 +1,7 @@
+# @package _global_
+model:
+  name: vjepa2
+  num_classes: 33
+  pretrained: true
+  pretrained_model: "facebook/vjepa2-vitg-fpc64-384-ssv2"
+  gradient_checkpointing: true

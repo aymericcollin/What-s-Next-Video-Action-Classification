@@ -1,0 +1,7 @@
+# @package _global_
+model:
+  name: vivit
+  pretrained_model: google/vivit-b-16x2-kinetics400
+  pretrained: true
+  num_classes: 33
+  gradient_checkpointing: true

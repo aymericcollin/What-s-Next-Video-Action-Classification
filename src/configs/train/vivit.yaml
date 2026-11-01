@@ -1,0 +1,18 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 4
+  num_workers: 4
+  head_only_epochs: 3
+  epochs: 20
+  lr: 3.0e-4
+  lr_backbone: 1.0e-5
+  lr_decay: 0.75
+  warmup_epochs: 2
+  weight_decay: 0.05
+  use_mixup: true
+  mixup_alpha: 0.8
+  label_smoothing: 0.1
+  weighted_sampler: true
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vivit/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vivit/latest_checkpoint.pt

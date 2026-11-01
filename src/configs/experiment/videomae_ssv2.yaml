@@ -1,0 +1,7 @@
+# @package _global_
+# Proposal 2: VideoMAE-base fine-tuned on SSv2, adapted to our 33 classes.
+# Run from src/: python train.py experiment=videomae_ssv2
+defaults:
+  - override /model: videomae
+  - override /data: videomae
+  - override /train: videomae

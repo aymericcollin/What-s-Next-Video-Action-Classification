@@ -1,0 +1,33 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 8
+  num_workers: 4
+
+  # Phase 1: head only (backbone frozen)
+  head_only_epochs: 2
+  # Phase 2: full fine-tuning (15 total)
+  epochs: 15
+
+  # Head LR (phase 1 + 2)
+  lr: 1.0e-4
+  # Backbone top-layer LR; earlier layers decay by lr_decay per layer (LLRD)
+  lr_backbone: 1.0e-5
+  lr_decay: 0.75
+
+  warmup_epochs: 2
+  weight_decay: 0.05
+
+  # MixUp regularization
+  use_mixup: true
+  mixup_alpha: 0.8
+
+  # Label smoothing (applied to CE loss)
+  label_smoothing: 0.1
+
+  # Weighted random sampler to counteract class imbalance
+  weighted_sampler: true
+
+  # Checkpoints isolated from Proposal 1
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/videomae/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/videomae/latest_checkpoint.pt

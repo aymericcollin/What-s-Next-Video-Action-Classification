@@ -1,0 +1,28 @@
+# @package _global_
+# Same as vjepa2 but with focal loss to focus on hard confused classes
+training:
+  device: cuda
+  batch_size: 16
+  num_workers: 4
+
+  head_only_epochs: 3
+  epochs: 12
+
+  lr: 1.0e-4
+  lr_backbone: 2.0e-5
+  lr_decay: 0.75
+
+  warmup_epochs: 2
+  weight_decay: 0.1
+
+  use_mixup: true
+  mixup_alpha: 0.4
+  label_smoothing: 0.1
+  weighted_sampler: true
+
+  # Focal loss: down-weights easy examples, focuses on hard confused pairs
+  focal_loss: true
+  focal_gamma: 2.0
+
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_balanced/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_balanced/latest_checkpoint.pt

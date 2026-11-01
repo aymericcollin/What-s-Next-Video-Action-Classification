@@ -1,0 +1,16 @@
+# @package _global_
+# V-JEPA2 ViT-L trained on ALL data (train + val combined)
+# No validation set — same hyperparams as the vjepa2_ssv2 run (best val 67.31%+)
+# Train for same total epochs, save checkpoint every 2 epochs.
+defaults:
+  - override /model: vjepa2
+  - override /data: vjepa2
+  - override /train: vjepa2
+
+dataset:
+  merge_val_to_train: true   # combine train (44993) + val (6745) = 51738 clips
+  val_ratio: 0.0             # no held-out val split
+
+training:
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_alldata/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_alldata/latest_checkpoint.pt

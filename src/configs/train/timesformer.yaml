@@ -1,0 +1,25 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 8
+  num_workers: 4
+
+  # Phase 1: train head only (backbone frozen)
+  head_only_epochs: 2
+  # Phase 2: full fine-tuning — 15 total matches TimeSformer paper (Bertasius et al.)
+  epochs: 15
+
+  # Head LR for phase 1+2.
+  # TimeSformer paper uses 1.6e-3 at batch 256; scaled to batch 8 → ~5e-5.
+  # We start from an already SSv2-finetuned model so head can use a bit more.
+  lr: 1.0e-4
+  # Backbone LR: lower than head since backbone weights are already good.
+  lr_backbone: 5.0e-6
+
+  warmup_epochs: 2
+  weight_decay: 0.05
+
+  # Best model (by val accuracy)
+  checkpoint_path: ${hydra:runtime.cwd}/best_model.pt
+  # Full training state saved every epoch (for resuming after disconnect)
+  resume_path: ${hydra:runtime.cwd}/latest_checkpoint.pt

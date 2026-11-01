@@ -1,0 +1,7 @@
+# @package _global_
+# V-JEPA2 ViT-L with focal loss + hard-class oversampling
+# Targets the pretend-vs-real and spatial-relation classes that are hardest to classify
+defaults:
+  - override /model: vjepa2
+  - override /data: vjepa2_balanced
+  - override /train: vjepa2_balanced

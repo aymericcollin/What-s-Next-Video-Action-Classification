@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - override /model: vivit
+  - override /data: vivit
+  - override /train: vivit

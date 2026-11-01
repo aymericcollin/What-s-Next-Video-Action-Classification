@@ -1,0 +1,7 @@
+# @package _global_
+# VJEPA2 ViT-L v2: focal loss, hard-class upsampling, improved LLRD schedule.
+# Run: python train.py experiment=vjepa2_v2_ssv2
+defaults:
+  - override /model: vjepa2
+  - override /data: vjepa2_v2
+  - override /train: vjepa2_v2

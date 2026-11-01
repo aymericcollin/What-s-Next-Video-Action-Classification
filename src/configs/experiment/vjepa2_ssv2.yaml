@@ -1,0 +1,7 @@
+# @package _global_
+# Proposal 3: V-JEPA 2 ViT-L fine-tuned on SSv2 (16 frames, 256px), adapted to 33 classes.
+# Run from src/: python train.py experiment=vjepa2_ssv2
+defaults:
+  - override /model: vjepa2
+  - override /data: vjepa2
+  - override /train: vjepa2

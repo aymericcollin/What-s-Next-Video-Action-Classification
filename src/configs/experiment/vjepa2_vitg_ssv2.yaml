@@ -1,0 +1,8 @@
+# @package _global_
+# Proposal 4: V-JEPA 2 ViT-G fine-tuned on SSv2 (16 frames, 384px), adapted to 33 classes.
+# Larger backbone than ViT-L: ~1B params, 40 encoder blocks, native 384px resolution.
+# Run from src/: python train.py experiment=vjepa2_vitg_ssv2
+defaults:
+  - override /model: vjepa2_vitg
+  - override /data: vjepa2_vitg
+  - override /train: vjepa2_vitg

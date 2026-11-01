@@ -1,0 +1,28 @@
+# @package _global_
+dataset:
+  train_dir: ${hydra:runtime.cwd}/processed_data/train
+  val_dir: ${hydra:runtime.cwd}/processed_data/val
+  test_dir: ${hydra:runtime.cwd}/processed_data/test
+  submission_output: ${hydra:runtime.cwd}/submission_vjepa2_v2.csv
+
+  image_size: 256
+  num_frames: 16
+  val_ratio: 0.0
+  seed: 42
+  max_samples: null
+  random_crop: true
+  color_jitter: true
+
+  # Per-class analysis on VJEPA2 v1 best checkpoint (64.68% val):
+  # Classes 16→19.1%, 22→40.8%, 9→43.5%, 25→45.2%, 17→46.8%, 24→47.5%, 11→49.7%
+  hard_class_weights:
+    16: 5.0   # Pretending to put into something — 19.1% (worst)
+    17: 4.0   # Pretending to throw — 46.8%
+    22: 4.0   # Putting something into something — 40.8% (confused with 16)
+    9:  3.0   # Moving something up — 43.5% (confused with picking up)
+    25: 3.0   # Showing something to camera — 45.2%
+    24: 3.0   # Putting something onto something — 47.5%
+    11: 3.0   # Picking something up — 49.7% (confused with pretending)
+    14: 2.0   # Pretending to pick something up — 50.4%
+    15: 2.0   # Pretending to pour — 55.4%
+    29: 2.0   # Throwing something — 58.7% (confused with pretend throw)

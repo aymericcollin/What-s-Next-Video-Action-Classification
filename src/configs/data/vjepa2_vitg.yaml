@@ -1,0 +1,16 @@
+# @package _global_
+dataset:
+  train_dir: ${hydra:runtime.cwd}/processed_data/train
+  val_dir: ${hydra:runtime.cwd}/processed_data/val
+  test_dir: ${hydra:runtime.cwd}/processed_data/test
+  submission_output: ${hydra:runtime.cwd}/submission_vjepa2_vitg.csv
+
+  # ViT-G was pretrained at 384px — keep native resolution
+  image_size: 384
+  # 8 frames (down from 16) to reduce sequence length ~4x in attention
+  num_frames: 8
+  val_ratio: 0.0
+  seed: 42
+  max_samples: null
+  random_crop: true
+  color_jitter: true

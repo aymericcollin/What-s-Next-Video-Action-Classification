@@ -1,0 +1,17 @@
+# @package _global_
+dataset:
+  train_dir: ${hydra:runtime.cwd}/processed_data/train
+  val_dir: ${hydra:runtime.cwd}/processed_data/val
+  test_dir: ${hydra:runtime.cwd}/processed_data/test
+  submission_output: ${hydra:runtime.cwd}/submission_vjepa2.csv
+
+  # V-JEPA 2 was pretrained at 256px — keep native resolution
+  image_size: 256
+  # 16 frames matches fpc16 pretraining; our videos have 4 real frames
+  # linspace sampling duplicates gracefully
+  num_frames: 16
+  val_ratio: 0.0
+  seed: 42
+  max_samples: null
+  random_crop: true
+  color_jitter: true

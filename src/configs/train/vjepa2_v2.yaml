@@ -1,0 +1,25 @@
+# @package _global_
+training:
+  device: cuda
+  batch_size: 8
+  num_workers: 4
+
+  head_only_epochs: 5
+  epochs: 20
+
+  lr: 2.0e-4
+  lr_backbone: 3.0e-6
+  lr_decay: 0.85
+  warmup_epochs: 3
+  weight_decay: 0.1
+  grad_clip: 1.0
+
+  use_mixup: true
+  mixup_alpha: 0.4
+  label_smoothing: 0.1
+  weighted_sampler: true
+  focal_loss: true
+  focal_gamma: 2.0
+
+  checkpoint_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_v2/best_model.pt
+  resume_path: ${hydra:runtime.cwd}/checkpoints/vjepa2_v2/latest_checkpoint.pt

@@ -1,0 +1,7 @@
+# @package _global_
+# Proposal 1: TimeSformer-base already fine-tuned on SSv2, adapted to our 33 classes.
+# Run from src/: python train.py experiment=timesformer_ssv2
+defaults:
+  - override /model: timesformer
+  - override /data: timesformer
+  - override /train: timesformer

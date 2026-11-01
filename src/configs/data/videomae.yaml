@@ -1,0 +1,15 @@
+# @package _global_
+dataset:
+  train_dir: ${hydra:runtime.cwd}/processed_data/train
+  val_dir: ${hydra:runtime.cwd}/processed_data/val
+  test_dir: ${hydra:runtime.cwd}/processed_data/test
+  submission_output: ${hydra:runtime.cwd}/submission.csv
+
+  # 4 physical frames duplicated to 16 via linspace — matches VideoMAE's temporal PE
+  num_frames: 16
+  # val_ratio <= 0 → use val_dir directly (real val split, not a subsample of train)
+  val_ratio: 0.0
+  seed: 42
+  max_samples: null
+  random_crop: true
+  color_jitter: true
